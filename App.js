@@ -61,7 +61,18 @@ const App: () => Node = () => {
   };
 
   return (
-    <AppRoutes />
+    <SafeAreaView>
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+       >
+        <View
+          style={{
+            backgroundColor: isDarkMode ? Colors.black : Colors.white,
+          }}>
+             <AppRoutes />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 

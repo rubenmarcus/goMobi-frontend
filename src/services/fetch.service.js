@@ -7,7 +7,7 @@ const FetchService = {
         return  await response.json();
         
       } catch (err) {
-        throw new Error("message");
+        console.error(error);
       }
     },
   };

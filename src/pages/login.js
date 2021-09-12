@@ -1,5 +1,10 @@
+import React from 'react';
+
+import {  Text } from "react-native";
+
+
 export const LoginPage = () => {
     return (
-        <div>Login Page</div>
+        <Text>Login Page</Text>
     )
 }
