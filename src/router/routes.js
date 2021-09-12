@@ -8,14 +8,15 @@ import React from 'react';
 import { View } from "react-native";
 
 const AppRoutes = () => {
-   return( <NativeRouter>
-        <View>
+   return( 
+   
+   <NativeRouter>
+        
             <Route exact path="/" component={LoginPage} />
             <Route path="/dashboard" component={DashboardPage} />
             <Route path="/partners" component={PartnersPage} />
             <Route path="/redeem" component={ReedeemPage} />
             <Route path="/transactions" component={TransactionsPage} />
-        </View>
     </NativeRouter>
    );
 }

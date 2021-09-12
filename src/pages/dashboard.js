@@ -1,5 +1,8 @@
+import React from 'react';
+import {Text} from "react-native";
+
 export const DashboardPage = () => {
     return (
-        <div>Page</div>
+        <Text>Page</Text>
     )
 }
