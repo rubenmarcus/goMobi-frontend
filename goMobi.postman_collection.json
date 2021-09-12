@@ -1,0 +1,18 @@
+{
+	"info": {
+		"_postman_id": "84392671-7102-47f2-b399-7f8f10213835",
+		"name": "goMobi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "USER Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		}
+	]
+}
