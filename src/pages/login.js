@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { StyleSheet, View, ImageBackground, Text, Image} from "react-native";
-import { TextInput, Button  } from 'react-native-paper';
+import { StyleSheet, View, ImageBackground, Text, Image } from "react-native";
+import { TextInput, Button } from 'react-native-paper';
 import { LANG_PTBR } from '../language/pt-br';
 import { useHistory } from "react-router-native";
 
@@ -15,7 +15,7 @@ export const LoginPage = () => {
     return (
         <View style={styles.container}>
             <ImageBackground source={require('../assets/Login.png')} resizeMode="cover" style={styles.imageBg}>
-            <Image source={require('../assets/logo.png')} style={styles.image}/>
+                <Image source={require('../assets/logo.png')} style={styles.image} />
 
                 <Text style={styles.text}> {LANG_PTBR.LOGIN.HEADER} </Text>
                 <Text style={styles.text}> {LANG_PTBR.LOGIN.DESCRIPTION} </Text>
@@ -38,9 +38,9 @@ export const LoginPage = () => {
                     secureTextEntry={true}
                     style={styles.form}
                 />
-  <Button mode="contained"      style={styles.button} theme={inputTheme} onPress={() =>   history.push("/dashboard")}>
-    ENTRAR
-  </Button>
+                <Button mode="contained" style={styles.button} theme={inputTheme} onPress={() => history.push("/dashboard")}>
+                    ENTRAR
+                </Button>
             </ImageBackground>
         </View>
     )
@@ -48,7 +48,7 @@ export const LoginPage = () => {
 const inputTheme = { colors: { primary: 'green' } }
 
 const styles = StyleSheet.create({
-    button:{
+    button: {
         marginTop: 20,
         width: '90%',
         height: 40,
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
         textAlign: 'center'
 
     },
-    image:{
+    image: {
         justifyContent: 'center',
         alignItems: 'center',
     },
