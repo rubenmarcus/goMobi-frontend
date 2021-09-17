@@ -2,31 +2,50 @@ import * as React from 'react';
 import { BottomNavigation, Text } from 'react-native-paper';
 import { StyleSheet, View } from "react-native";
 import HomeComponent from './home';
+import { useHistory } from "react-router-native";
+import { PartnersPage } from '../pages/partners';
 
-const HomeRoute = () => <HomeComponent />;
+
+
+
+
+const NavBarComponent = () => {
+
+let HomeSet = 1;
+
+// const checkIndex = () => {
+//   if(index == 0) {
+//     HomeSet = 0;
+//   }
+
+//   setIndex
+// }
+  
+const HomeRoute = () => { return <HomeComponent checkIdx={HomeSet} />};
 
 const TransferRoute = () => <Text>Transferir</Text>;
+
+const PartnerRoute = () => <PartnersPage />;
 
 const RedeemRoute = () => <Text>Resgatar</Text>;
 
 const MenuRoute = () => <Text>Menu Route</Text>;
 
 
-const NavBarComponent = () => {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     { key: 'dashboard', title: 'Home', icon: 'home' },
     { key: 'transfer', title: 'Transferir', icon: 'transfer-right' },
     { key: 'redeem', title: 'Resgatar', icon: 'currency-usd' },
-    { key: 'menu', title: 'Menu', icon: 'menu' }
-
+    { key: 'menu', title: 'Menu', icon: 'menu' },
   ]);
 
   const renderScene = BottomNavigation.SceneMap({
     dashboard: HomeRoute,
     transfer: TransferRoute,
     redeem:RedeemRoute,
-    menu: MenuRoute
+    menu: MenuRoute,
+    partners: PartnerRoute
   });
 
   return (
