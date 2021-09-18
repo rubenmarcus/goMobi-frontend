@@ -4,7 +4,7 @@ import { TextInput, Button } from 'react-native-paper';
 import { TextInputMask } from 'react-native-masked-text';
 import { useHistory } from "react-router-native";
 
-const RedeemPage = () => {
+const CreditPage = () => {
 
     const [credit, setCredit] = useState('');
     let history = useHistory();
@@ -13,14 +13,13 @@ const RedeemPage = () => {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <Text style={{color:'#fff', fontSize: 20, position: 'absolute', left:22, top:30}}>Resgatar</Text>
-                <Text style={{color:'#fff', fontSize: 18, position: 'absolute', fontWeight:'bold', left:20, top:65}}> R$ 170,33</Text>
+                <Text style={{color:'#fff', fontSize: 20, position: 'absolute', left:22, top:30}}>Adicionar Crédito</Text>
              </View>
 
             <View style={{flex:4}}>
             <TextInput
                 mode="flat"
-                label="Digite o valor a ser resgatado"
+                label="Digite o valor a ser creditado"
                 style={styles.form} 
                 theme={inputTheme}
                 render={props =>
@@ -37,7 +36,10 @@ const RedeemPage = () => {
             />
 
             <Button mode="contained" style={styles.button} theme={inputThemesec} onPress={() => history.push('/credit')}>
-                RESGATAR
+                ADICIONAR CRÉDITO
+            </Button>
+            <Button mode="contained" style={styles.buttonBack} theme={inputTheme} onPress={() => history.push('/dashboard')}>
+                VOLTAR
             </Button>
             </View>
         </View>
@@ -77,4 +79,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default RedeemPage
+export default CreditPage

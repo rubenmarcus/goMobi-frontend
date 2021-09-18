@@ -5,7 +5,6 @@ import { StyleSheet, View, ImageBackground, Image } from "react-native";
 
 
 const UserHeaderComponent = () => {
-
     return (
         <View style={styles.header} >
             <ImageBackground source={require('../assets/bg.png')} resizeMode="cover" style={styles.imageBg}>
@@ -18,9 +17,7 @@ const UserHeaderComponent = () => {
                     + ver seu perfil
                 </Button>
             </ImageBackground>
-    
                 <Image source={require('../assets/user.png')} style={{borderRadius:100, width:90, height:90 ,position:'absolute', top:30, right:10}} />
-
         </View>
     );
 };

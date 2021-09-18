@@ -5,7 +5,8 @@ import { PartnersPage } from "../pages/partners";
 import { ReedeemPage } from "../pages/redeeem";
 import { TransactionsPage } from "../pages/transactions";
 import React from 'react';
-import { View } from "react-native";
+import  CreditPage  from "../pages/credit";
+import TransferPage from "../pages/transfer";
 
 const AppRoutes = () => {
    return( 
@@ -16,7 +17,9 @@ const AppRoutes = () => {
             <Route path="/dashboard" component={DashboardPage} />
             <Route path="/partners" component={PartnersPage} />
             <Route path="/redeem" component={ReedeemPage} />
+            <Route path="/transfer" component={TransferPage} />
             <Route path="/transactions" component={TransactionsPage} />
+            <Route path="/credit" component={CreditPage} />
     </NativeRouter>
    );
 }

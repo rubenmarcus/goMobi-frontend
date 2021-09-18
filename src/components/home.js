@@ -3,32 +3,9 @@ import { Button, Card } from 'react-native-paper';
 import { StyleSheet, View, Text } from "react-native";
 import UserHeaderComponent from './userHeader';
 import { useHistory } from 'react-router';
+import { ActivityCard } from './activitycard';
 
-const ActivityCard = () => {
-  return (<View>
-    <Card style={styles.cardAct}>
-      <Card.Content>
-        <Button icon="bus" style={styles.cardIcon} labelStyle={{ fontSize: 45 }}
-          theme={iconTheme}>
-        </Button>
-        <Text style={styles.cardTitle}>Viagem de Ônibus</Text>
 
-        <View style={styles.cardPrice}>
-
-          <Button icon="cash" style={styles.cardSmallIcon} labelStyle={{ fontSize: 25 }}
-            theme={iconTheme}>
-          </Button>
-
-          <Text>R$ 4.50</Text></View>
-        <View style={styles.cardKm}>
-          <Button icon="map-marker-multiple" style={styles.cardSmallMarker} labelStyle={{ fontSize: 20 }}
-            theme={iconTheme}>        </Button>
-
-          <Text>20KM</Text></View>
-      </Card.Content>
-    </Card>
-  </View>)
-}
 
 
 const HomeComponent = () => {
@@ -41,25 +18,25 @@ const HomeComponent = () => {
 
       <UserHeaderComponent />
       <View style={{ height: 100, background: 'transparent', position: 'relative', top: -260 }}>
-        <Text style={{fontSize:20, paddingLeft: 10, marginBottom:20}}> Atividades</Text>
+        <Text style={{ fontSize: 20, paddingLeft: 10, marginBottom: 20 }}> Atividades</Text>
         <ActivityCard />
         <ActivityCard />
 
       </View>
-      <View style={{  background: 'transparent', position: 'relative', top: -50 }}>
-      <Button mode="contained" style={styles.button} theme={inputTheme} onPress={() => history.push('/partners')}>
-        VER PARCEIROS
-      </Button>
-      <Button mode="contained" style={styles.button} theme={inputThemesec} onPress={() => history.push('/partners')}>
-        ADICIONAR CRÉDITOS
-      </Button>
+      <View style={{ background: 'transparent', position: 'relative', top: -50 }}>
+        <Button mode="contained" style={styles.button} theme={inputTheme} onPress={() => history.push('/partners')}>
+          VER PARCEIROS
+        </Button>
+        <Button mode="contained" style={styles.button} theme={inputThemesec} onPress={() => history.push('/credit')}>
+          ADICIONAR CRÉDITOS
+        </Button>
       </View>
     </View>
   );
 };
 const inputTheme = { colors: { primary: '#1F9655' } }
 
-const inputThemesec = { colors: { primary: '#08592D' }}
+const inputThemesec = { colors: { primary: '#08592D' } }
 const iconTheme = { colors: { primary: 'black' }, width: 40 }
 const styles = StyleSheet.create({
   navbar: {

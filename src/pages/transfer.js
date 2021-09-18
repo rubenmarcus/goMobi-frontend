@@ -4,7 +4,7 @@ import { TextInput, Button } from 'react-native-paper';
 import { TextInputMask } from 'react-native-masked-text';
 import { useHistory } from "react-router-native";
 
-const RedeemPage = () => {
+const TransferPage = () => {
 
     const [credit, setCredit] = useState('');
     let history = useHistory();
@@ -13,15 +13,21 @@ const RedeemPage = () => {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <Text style={{color:'#fff', fontSize: 20, position: 'absolute', left:22, top:30}}>Resgatar</Text>
-                <Text style={{color:'#fff', fontSize: 18, position: 'absolute', fontWeight:'bold', left:20, top:65}}> R$ 170,33</Text>
+                <Text style={{color:'#fff', fontSize: 20, position: 'absolute', left:22, top:30}}>Transferir</Text>
              </View>
 
             <View style={{flex:4}}>
             <TextInput
                 mode="flat"
-                label="Digite o valor a ser resgatado"
+                label="Digite o nome do usuário para transferir"
                 style={styles.form} 
+                theme={inputTheme}
+            />
+
+<TextInput
+                mode="flat"
+                label="Digite o valor"
+                style={styles.formVal} 
                 theme={inputTheme}
                 render={props =>
                     <TextInputMask
@@ -37,7 +43,7 @@ const RedeemPage = () => {
             />
 
             <Button mode="contained" style={styles.button} theme={inputThemesec} onPress={() => history.push('/credit')}>
-                RESGATAR
+                TRANSFERIR
             </Button>
             </View>
         </View>
@@ -60,6 +66,14 @@ const styles = StyleSheet.create({
         marginTop: 60,
         marginBottom: 0
     },
+    formVal: {
+        width: '90%',
+        backgroundColor: 'rgba(255,255,255,0.7)',
+        alignSelf: 'center',
+        borderColor: 'white',
+        marginTop: 10,
+        marginBottom: 0
+    },
     button: {
         marginTop: 20,
         width: '90%',
@@ -77,4 +91,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default RedeemPage
+export default TransferPage
