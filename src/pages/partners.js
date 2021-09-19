@@ -44,6 +44,7 @@ const inputTheme = { colors: { primary: 'green' } }
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor:'#fff'
     },
     title: {fontSize:30, paddingLeft:30, paddingTop:30},
     desc: {fontSize:15, paddingLeft:30, paddingTop:10, paddingBottom:20},
