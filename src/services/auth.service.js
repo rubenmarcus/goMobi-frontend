@@ -1,8 +1,15 @@
 import FetchService from "./fetch.service"
 
-export const AUTHSERVICE = (userData) => {
-    const options = { method: 'POST' },
+export default async function AUTHSERVICE(userData) {
 
-    return FetchService.call(userData, options);
+    const url = 'https://gomobi-api.azurewebsites.net/api/v1/users/authenticate';
+
+    const options = {
+        method: 'POST', body: JSON.stringify(userData), headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+
+        return  FetchService(url, options);
 
 }

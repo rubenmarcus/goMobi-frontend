@@ -4,13 +4,31 @@ import { StyleSheet, View, ImageBackground, Text, Image } from "react-native";
 import { TextInput, Button } from 'react-native-paper';
 import { LANG_PTBR } from '../language/pt-br';
 import { useHistory } from "react-router-native";
+import AUTHSERVICE from '../services/auth.service';
 
 
 export const LoginPage = () => {
 
-    const [text, setText] = React.useState('');
+    const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
+    const [userRes, setRes] = React.useState('');
+
     let history = useHistory();
+    const fetchUser = async () => {
+        const data = {
+            "email": email,
+            "password": password,
+            "remember": true
+        }
+
+        const res = await AUTHSERVICE(data);
+
+        if (res.data) {
+            history.push('/dashboard')
+        } else {
+            setRes(res.errors[0])
+        }
+    }
 
     return (
         <View style={styles.container}>
@@ -18,14 +36,14 @@ export const LoginPage = () => {
                 <Image source={require('../assets/logo.png')} style={styles.image} />
 
                 <Text style={styles.text}> {LANG_PTBR.LOGIN.HEADER} </Text>
-                <Text style={styles.text}> {LANG_PTBR.LOGIN.DESCRIPTION} </Text>
+                <Text style={{ color: 'red', fontSize: 14 }}> {userRes} </Text>
                 <TextInput
                     label="Email"
-                    value={text}
+                    value={email}
                     mode="flat"
-                    onChangeText={text => setText(text)}
+                    onChangeText={em => setEmail(em)}
                     theme={inputTheme}
-                    style={styles.form}
+                    style={userRes ? styles.formError : styles.form}
                 />
 
 
@@ -33,12 +51,12 @@ export const LoginPage = () => {
                     label="Senha"
                     value={password}
                     mode="flat"
-                    onChangeText={password => setPassword(password)}
+                    onChangeText={pass => setPassword(pass)}
                     theme={inputTheme}
                     secureTextEntry={true}
-                    style={styles.form}
+                    style={userRes ? styles.formError : styles.form}
                 />
-                <Button mode="contained" style={styles.button} theme={inputTheme} onPress={() => history.push("/dashboard")}>
+                <Button mode="contained" style={styles.button} theme={inputTheme} onPress={() => fetchUser()}>
                     ENTRAR
                 </Button>
             </ImageBackground>
@@ -61,14 +79,24 @@ const styles = StyleSheet.create({
         borderColor: 'white',
         marginTop: 20
     },
+    formError: {
+        width: '90%',
+        backgroundColor: 'rgba(255,255,255,0.7)',
+        alignSelf: 'center',
+        borderColor: 'red',
+        marginTop: 20
+    },
     text: {
         color: '#fff',
-        textAlign: 'center'
+        textAlign: 'center',
+        fontSize:20
 
     },
     image: {
         justifyContent: 'center',
         alignItems: 'center',
+        position: 'relative',
+        top: -110
     },
     imageBg: {
         flex: 1,
