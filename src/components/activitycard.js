@@ -1,75 +1,110 @@
 import * as React from 'react';
-import { Button, Card } from 'react-native-paper';
-import { StyleSheet, View, Text } from "react-native";
+import {Button, Card} from 'react-native-paper';
+import {StyleSheet, View, Text} from 'react-native';
 
+export const ActivityCard = ({data}) => {
 
-export const ActivityCard = () => {
-    return (<View>
-      <Card style={styles.cardAct}>
+  return (
+    <View style={{
+      background: 'transparent',
+      position: 'relative',
+      width: 390
+
+    }}>
+      <Card style={ data.type === 'débito' ? styles.cardDebt : styles.cardAct}>
         <Card.Content>
-          <Button icon="bus" style={styles.cardIcon} labelStyle={{ fontSize: 45 }}
-            theme={iconTheme}>
-          </Button>
-          <Text style={styles.cardTitle}>Viagem de Ônibus</Text>
-  
-          <View style={styles.cardPrice}>
-  
-            <Button icon="cash" style={styles.cardSmallIcon} labelStyle={{ fontSize: 25 }}
-              theme={iconTheme}>
-            </Button>
-  
-            <Text>R$ 4.50</Text></View>
+          <Button
+            icon="cash-multiple"
+            style={styles.cardIcon}
+            labelStyle={{fontSize: 45}}
+            theme={iconTheme}></Button>
+          <Text style={styles.cardTitle}>
+        
+           R$ {data.value }
+          </Text>
+
+          {data.partner ? (
+            <View style={styles.cardPrice}>
+              <Button
+                icon="account"
+                style={styles.cardSmallIcon}
+                labelStyle={{fontSize: 25}}
+                theme={iconTheme}></Button>
+
+              <Text>{data.partner}</Text>
+            </View>
+          ) : null}
           <View style={styles.cardKm}>
-            <Button icon="map-marker-multiple" style={styles.cardSmallMarker} labelStyle={{ fontSize: 20 }}
-              theme={iconTheme}>        </Button>
-  
-            <Text>20KM</Text></View>
+            <Button
+              icon={
+                data.type === 'débito' ? 'currency-usd-off' : 'currency-usd'
+              }
+              style={styles.cardSmallMarker}
+              labelStyle={{fontSize: 20}}
+              theme={iconTheme}>
+              {' '}
+            </Button>
+
+            <Text> {data.type} </Text>
+          </View>
         </Card.Content>
       </Card>
-    </View>)
-  }
+    </View>
+  );
+};
 
-
-  
-const iconTheme = { colors: { primary: 'black' }, width: 40 }
+const iconTheme = {colors: {primary: 'black'}, width: 40};
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    form: {
-        width: '90%',
-        backgroundColor: 'rgba(255,255,255,0.7)',
-        alignSelf: 'center',
-        borderColor: 'white',
-        marginTop: 60,
-        marginBottom: 0
-    },
-    formVal: {
-        width: '90%',
-        backgroundColor: 'rgba(255,255,255,0.7)',
-        alignSelf: 'center',
-        borderColor: 'white',
-        marginTop: 10,
-        marginBottom: 0
-    },
-    header: { flex:1, position:'relative', height:180,backgroundColor:'#35DC81' },
-    buttonBack: {
-        position:'absolute',
-        width: '90%',
-        height: 40,
-        fontSize: 20,
-        alignSelf: 'center',
-        bottom:30,
-    },
+  container: {
+    flex: 1,
+  },
+  form: {
+    width: '90%',
+    backgroundColor: 'rgba(255,255,255,0.7)',
+    alignSelf: 'center',
+    borderColor: 'white',
+    marginTop: 60,
+    marginBottom: 0,
+  },
+  formVal: {
+    width: '90%',
+    backgroundColor: 'rgba(255,255,255,0.7)',
+    alignSelf: 'center',
+    borderColor: 'white',
+    marginTop: 10,
+    marginBottom: 0,
+  },
+  header: {
+    flex: 1,
+    position: 'relative',
+    height: 180,
+    backgroundColor: '#35DC81',
+  },
+  buttonBack: {
+    position: 'absolute',
+    width: '90%',
+    height: 40,
+    fontSize: 20,
+    alignSelf: 'center',
+    bottom: 30,
+  },
   navbar: {
-    backgroundColor: '#f4f4f4'
+    backgroundColor: '#f4f4f4',
   },
   button: {
     marginTop: 20,
     width: '90%',
     height: 40,
     fontSize: 20,
-    alignSelf: 'center'
+    alignSelf: 'center',
+  },
+  cardDebt: {
+    backgroundColor: '#fab4c7',
+    width: '90%',
+    alignSelf: 'center',
+    position: 'relative',
+    height: 100,
+    marginBottom: 20,
   },
   cardAct: {
     backgroundColor: '#DEFFED',
@@ -77,13 +112,13 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     position: 'relative',
     height: 100,
-    marginBottom: 20
+    marginBottom: 20,
   },
   cardTitle: {
     position: 'absolute',
     top: 20,
     left: 100,
-    fontSize: 20
+    fontSize: 20,
   },
   cardIcon: {
     position: 'absolute',
@@ -109,5 +144,5 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 70,
     left: 280,
-  }
+  },
 });

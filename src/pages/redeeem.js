@@ -1,20 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text } from "react-native";
 import { TextInput, Button } from 'react-native-paper';
 import { TextInputMask } from 'react-native-masked-text';
 import { useHistory } from "react-router-native";
+import {USERBALANCE} from '../services/user.service';
+import { useAsyncStorage } from '@react-native-async-storage/async-storage';
 
 const RedeemPage = () => {
 
     const [credit, setCredit] = useState('');
+    const [amount, setAmount] = useState('');
+
     let history = useHistory();
+    const { getItem, setItem } = useAsyncStorage('@storage_Key');
+
+    const readItemFromStorage = async () => {
+        const item = await getItem();
+        const res = await USERBALANCE(item);
+
+        if (res.data) { 
+                setAmount(res.data.amount)
+        }
+
+      };
+
+    useEffect(() => {
+        readItemFromStorage();
+      }, []);
 
 
     return (
         <View style={styles.container}>
             <View style={styles.header}>
                 <Text style={{color:'#fff', fontSize: 20, position: 'absolute', left:22, top:30}}>Resgatar</Text>
-                <Text style={{color:'#fff', fontSize: 18, position: 'absolute', fontWeight:'bold', left:20, top:65}}> R$ 170,33</Text>
+                <Text style={{color:'#fff', fontSize: 18, position: 'absolute', fontWeight:'bold', left:20, top:65}}> R$ {amount}</Text>
              </View>
 
             <View style={{flex:4}}>
