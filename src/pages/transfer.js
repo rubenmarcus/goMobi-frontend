@@ -25,6 +25,7 @@ const TransferPage = () => {
     if (res.data) {
       setRes({type: 'ok', data: 'Transferência efetuada com sucesso!'});
     } else {
+        
       setRes({type: 'error', data: 'Ouve um Erro na transferência'});
     }
   };

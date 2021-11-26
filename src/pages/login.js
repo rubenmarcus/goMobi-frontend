@@ -48,7 +48,6 @@ export const LoginPage = () => {
     }
   };
 
-  console.log(isLoading, 'isloading')
 
   return (
     <View style={styles.container}>
